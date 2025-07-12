@@ -48,8 +48,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPositionTransform: {fileID: 8636724253070203208}
   characterActions:
-  - action: 0
-    infiniteUse: 0
+  - action: 7
+    actionName: Move Right
+    infiniteUse: 1
+  - action: 8
+    actionName: Move Left
+    infiniteUse: 1
   levelActions: []
 --- !u!1 &3870810316532244888
 GameObject:

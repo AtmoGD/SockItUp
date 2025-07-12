@@ -3,6 +3,7 @@ using TMPro;
 
 public enum ActionButtonAction
 {
+    // <------ UI ------>
     StartGame,
     OpenStartScreen,
     OpenCredits,
@@ -10,8 +11,11 @@ public enum ActionButtonAction
     OpenPausedMenu,
     HidePausedMenu,
     QuitGame,
+    // <------ Character ------>
     MoveCharacterRight,
     MoveCharacterLeft,
+    // <------ Level ------>
+
 }
 
 [RequireComponent(typeof(RectTransform))]
@@ -20,6 +24,7 @@ public class ActionButton : MonoBehaviour
     private RectTransform rect;
     [SerializeField] private ActionButtonAction action = ActionButtonAction.StartGame;
     [SerializeField] private string actionName = "DefaultAction";
+    [SerializeField] private bool infiniteUse = false;
     [SerializeField] private TMP_Text buttonText;
 
     private void Awake()
@@ -37,6 +42,18 @@ public class ActionButton : MonoBehaviour
     public string GetActionName()
     {
         return actionName;
+    }
+
+    public void SetAction(ActionButtonAction _newAction, string _actionName, bool _infiniteUse = false, TMP_Text buttonText = null)
+    {
+        action = _newAction;
+        actionName = _actionName;
+        infiniteUse = _infiniteUse;
+
+        if (buttonText != null)
+        {
+            buttonText.text = _actionName;
+        }
     }
 
     public virtual void StartOverlapping()
@@ -85,6 +102,11 @@ public class ActionButton : MonoBehaviour
             default:
                 Debug.LogWarning("Action not implemented: " + action);
                 break;
+        }
+
+        if (!infiniteUse)
+        {
+            Destroy(gameObject);
         }
     }
 

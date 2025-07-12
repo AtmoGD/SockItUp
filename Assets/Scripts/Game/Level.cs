@@ -5,14 +5,19 @@ using UnityEngine;
 public class LevelActions
 {
     public ActionButtonAction action;
+    public string actionName;
     public bool infiniteUse;
 }
 
 public class Level : MonoBehaviour
 {
     [SerializeField] private Transform startPositionTransform;
+
     [SerializeField] private List<LevelActions> characterActions = new List<LevelActions>();
+    public List<LevelActions> CharacterActions { get => characterActions; }
     [SerializeField] private List<LevelActions> levelActions = new List<LevelActions>();
+    public List<LevelActions> LevelActions { get => levelActions; }
+
     protected Sock sock;
     protected Game gm;
 
