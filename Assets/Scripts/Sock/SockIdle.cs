@@ -26,19 +26,16 @@ public class SockIdle : SockState
 
     protected new virtual void CheckState()
     {
-        Debug.Log($"Checking state: {this.GetType().Name}");
-
         if (Game.Manager.CurrentState != GameState.Playing)
             return;
 
 
-        Debug.Log($"Sock is in idle state: {this.GetType().Name}");
+        Debug.Log($"IsOnWall: {sock.IsOnWall}, IsGrounded: {sock.IsGrounded}");
 
+        if (!sock.IsGrounded)
+        {
+            sock.ChangeState(sock.SockFall);
+        }
         base.CheckState();
-
-        // if (!sock.Character.isGrounded)
-        // {
-        //     sock.ChangeState(sock.SockFall);
-        // }
     }
 }

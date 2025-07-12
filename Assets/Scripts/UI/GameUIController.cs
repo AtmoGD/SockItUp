@@ -4,13 +4,14 @@ using System.Collections;
 
 public class GameUIController : MonoBehaviour
 {
-    [SerializeField] private RectTransform characterActionsPanel;
-    [SerializeField] private GameObject characterActionPrefab;
-    [SerializeField] private float startButtonHeight = 50f;
+    [SerializeField] private float startAnimatingFromY = 50f;
+    [SerializeField] private float buttonStartPositionY = -1500f;
     [SerializeField] private float buttonHeight = 50f;
     [SerializeField] private float buttonSpacing = 10f;
     [SerializeField] private float buttonAnimationDelay = 0.2f;
     [SerializeField] private int maxButtons = 10;
+    [SerializeField] private RectTransform characterActionsPanel;
+    [SerializeField] private GameObject characterActionPrefab;
     public List<ActionButton> characterActionButtons = new List<ActionButton>();
     [SerializeField] private RectTransform levelActionsPanel;
     [SerializeField] private GameObject levelActionPrefab;
@@ -27,43 +28,39 @@ public class GameUIController : MonoBehaviour
         ClearActionButtons(characterActionButtons);
         ClearActionButtons(levelActionButtons);
 
-        foreach (var action in _level.CharacterActions)
+        foreach (ActionData action in _level.CharacterActions)
         {
             if (characterActionButtons.Count >= maxButtons)
-            {
                 break;
-            }
 
-            CreateButton(action, characterActionsPanel, characterActionPrefab, characterActionButtons);
+            CreateButton(action, true);
         }
 
-        foreach (var action in _level.LevelActions)
+        foreach (ActionData action in _level.LevelActions)
         {
             if (levelActionButtons.Count >= maxButtons)
-            {
                 break;
-            }
 
-            CreateButton(action, levelActionsPanel, levelActionPrefab, levelActionButtons);
+            CreateButton(action, false);
         }
     }
 
-    private ActionButton CreateButton(LevelActions _action, RectTransform _parentPanel, GameObject _actionPrefab, List<ActionButton> _targetList)
+    private void CreateButton(ActionData _action, bool _characterActionButtons)
     {
-        var button = Instantiate(_actionPrefab, _parentPanel).GetComponent<ActionButton>();
-        RectTransform buttonRect = button.GetRect();
-        buttonRect.anchoredPosition = new Vector2(buttonRect.anchoredPosition.x, -startButtonHeight * characterActionButtons.Count);
+        List<ActionButton> currentList = _characterActionButtons ? characterActionButtons : levelActionButtons;
+        RectTransform currentPanel = _characterActionButtons ? characterActionsPanel : levelActionsPanel;
+        GameObject currentPrefab = _characterActionButtons ? characterActionPrefab : levelActionPrefab;
+
+        ActionButton button = Instantiate(currentPrefab, currentPanel).GetComponent<ActionButton>();
+        currentList.Add(button);
         button.SetAction(_action.action, _action.actionName);
-        _targetList.Add(button);
 
         AnimateToPosition animateToPosition = button.GetComponent<AnimateToPosition>();
         if (animateToPosition != null)
         {
-            float targetHeight = buttonHeight + buttonSpacing * _targetList.Count;
-            StartCoroutine(StartAnimationWithDelay(button, buttonAnimationDelay * _targetList.Count, targetHeight));
+            float targetHeight = ((buttonHeight + buttonSpacing) * currentList.Count) + buttonStartPositionY;
+            StartCoroutine(StartAnimationWithDelay(button, buttonAnimationDelay * currentList.Count, targetHeight));
         }
-
-        return button;
     }
 
     IEnumerator StartAnimationWithDelay(ActionButton _button, float _delay, float _targetHeight)
@@ -72,7 +69,7 @@ public class GameUIController : MonoBehaviour
         AnimateToPosition animateToPosition = _button.GetComponent<AnimateToPosition>();
         if (animateToPosition != null)
         {
-            animateToPosition.StartAnimation(_targetHeight);
+            animateToPosition.StartAnimation(startAnimatingFromY, _targetHeight);
         }
     }
 

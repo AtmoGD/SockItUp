@@ -6,4 +6,9 @@ public class UIAnimationHelper : MonoBehaviour
     {
         Game.Manager.UIController.ShowGameUI();
     }
+
+    public void LoadLevel()
+    {
+        Game.Manager.LoadLevel();
+    }
 }

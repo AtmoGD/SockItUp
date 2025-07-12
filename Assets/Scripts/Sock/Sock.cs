@@ -30,6 +30,17 @@ public class Sock : MonoBehaviour
         }
     }
 
+    public bool IsOnWall
+    {
+        get
+        {
+            if (WallCheckTransform == null)
+                return false;
+
+            return Physics.CheckSphere(WallCheckTransform.position, WallCheckRadius, WallLayer);
+        }
+    }
+
     public Rigidbody Rb { get; private set; } = null;
     protected SockState currentState;
     protected SockState targetedNextState;
@@ -42,25 +53,16 @@ public class Sock : MonoBehaviour
 
     public void ChangeState(SockState newState)
     {
-        if (currentState != null)
-        {
-            currentState.Exit();
-        }
+        currentState?.Exit();
 
         currentState = newState;
 
-        if (currentState != null)
-        {
-            currentState.Enter(this);
-        }
+        currentState?.Enter(this);
     }
 
     void Update()
     {
-        if (currentState != null)
-        {
-            currentState.FrameUpdate();
-        }
+        currentState?.FrameUpdate();
 
         if (targetedNextState != null && currentState.CanChangeStateTo(targetedNextState))
         {
@@ -68,18 +70,12 @@ public class Sock : MonoBehaviour
             targetedNextState = null;
         }
 
-        if (currentState != null)
-        {
-            currentState.CheckState();
-        }
+        currentState?.CheckState();
     }
 
     void FixedUpdate()
     {
-        if (currentState != null)
-        {
-            currentState.PhysicsUpdate();
-        }
+        currentState?.PhysicsUpdate();
     }
 
     public void MoveCharacter(Vector2 direction)

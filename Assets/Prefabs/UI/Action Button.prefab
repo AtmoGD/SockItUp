@@ -52,8 +52,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b8de67c63a46c740800a4849283c908, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rect: {fileID: 6923083748426126517}
   action: 0
   actionName: Start Game
+  infiniteUse: 0
   buttonText: {fileID: 843789822470961889}
 --- !u!222 &5286907620046188751
 CanvasRenderer:

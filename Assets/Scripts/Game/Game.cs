@@ -20,7 +20,8 @@ public class Game : MonoBehaviour
     public Sock Sock => sock;
     [SerializeField] private UIController uiController;
     public UIController UIController => uiController;
-    [SerializeField] private float levelLoadDelay = 1f; // Delay before loading the level
+    [SerializeField] private GameUIController gameUIController;
+    public GameUIController GameUIController => gameUIController;
     private int currentLevelIndex = -1;
     private Level currentLevel;
     [SerializeField] private GameState currentState = GameState.MainMenu;
@@ -65,14 +66,10 @@ public class Game : MonoBehaviour
         }
 
         uiController.LoadLevel();
-
-        StartCoroutine(LoadLevelAfter(levelLoadDelay));
     }
 
-    IEnumerator LoadLevelAfter(float delay)
+    public void LoadLevel()
     {
-        yield return new WaitForSeconds(delay);
-
         currentLevel = Instantiate(levelList[currentLevelIndex], levelContainer);
 
         currentLevel.InitLevel(sock, this);

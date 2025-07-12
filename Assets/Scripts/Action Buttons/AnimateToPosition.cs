@@ -30,11 +30,11 @@ public class AnimateToPosition : MonoBehaviour
         }
     }
 
-    public void StartAnimation(float _targetHeight)
+    public void StartAnimation(float _startHeightfloat, float _targetHeight)
     {
         started = true;
-        elapsedTime = 0f; // Reset elapsed time
-        startHeight = rectTransform.anchoredPosition.y; // Store the starting height
-        targetHeight = _targetHeight; // Set the new target height
+        elapsedTime = 0f;
+        startHeight = _startHeightfloat;
+        targetHeight = _targetHeight;
     }
 }

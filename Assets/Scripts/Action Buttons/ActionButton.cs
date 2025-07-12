@@ -14,22 +14,27 @@ public enum ActionButtonAction
     // <------ Character ------>
     MoveCharacterRight,
     MoveCharacterLeft,
+    CharacterJump,
+    CharacterInteract,
     // <------ Level ------>
-
+    RotateLevelLeft,
+    RotateLevelRight,
 }
 
 [RequireComponent(typeof(RectTransform))]
 public class ActionButton : MonoBehaviour
 {
-    private RectTransform rect;
+    [SerializeField] private RectTransform rect = null;
     [SerializeField] private ActionButtonAction action = ActionButtonAction.StartGame;
     [SerializeField] private string actionName = "DefaultAction";
     [SerializeField] private bool infiniteUse = false;
-    [SerializeField] private TMP_Text buttonText;
+    [SerializeField] private TMP_Text buttonText = null;
+    [SerializeField] private bool initOnAwake = false;
 
     private void Awake()
     {
-        rect = GetComponent<RectTransform>();
+        if (!initOnAwake)
+            return;
 
         buttonText.text = actionName;
     }
@@ -44,16 +49,12 @@ public class ActionButton : MonoBehaviour
         return actionName;
     }
 
-    public void SetAction(ActionButtonAction _newAction, string _actionName, bool _infiniteUse = false, TMP_Text buttonText = null)
+    public void SetAction(ActionButtonAction _newAction, string _actionName, bool _infiniteUse = false)
     {
         action = _newAction;
         actionName = _actionName;
         infiniteUse = _infiniteUse;
-
-        if (buttonText != null)
-        {
-            buttonText.text = _actionName;
-        }
+        buttonText.text = _actionName;
     }
 
     public virtual void StartOverlapping()

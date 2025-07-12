@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class LevelActions
+public class ActionData
 {
     public ActionButtonAction action;
     public string actionName;
@@ -13,10 +13,10 @@ public class Level : MonoBehaviour
 {
     [SerializeField] private Transform startPositionTransform;
 
-    [SerializeField] private List<LevelActions> characterActions = new List<LevelActions>();
-    public List<LevelActions> CharacterActions { get => characterActions; }
-    [SerializeField] private List<LevelActions> levelActions = new List<LevelActions>();
-    public List<LevelActions> LevelActions { get => levelActions; }
+    [SerializeField] private List<ActionData> characterActions = new List<ActionData>();
+    public List<ActionData> CharacterActions { get => characterActions; }
+    [SerializeField] private List<ActionData> levelActions = new List<ActionData>();
+    public List<ActionData> LevelActions { get => levelActions; }
 
     protected Sock sock;
     protected Game gm;
@@ -39,5 +39,7 @@ public class Level : MonoBehaviour
 
         sock.transform.position = startPositionTransform.position;
         sock.ChangeState(sock.SockIdle);
+
+        gm.GameUIController.InitLevel(this);
     }
 }

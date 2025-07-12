@@ -10,7 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3082871970186361528, guid: d750250e47e3a244c83682bf89792682, type: 3}
       propertyPath: m_Name
-      value: Player Action Button Variant
+      value: Character Action Button Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3188749071397139556, guid: d750250e47e3a244c83682bf89792682, type: 3}
+      propertyPath: infiniteUse
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6923083748426126517, guid: d750250e47e3a244c83682bf89792682, type: 3}
       propertyPath: m_Pivot.x

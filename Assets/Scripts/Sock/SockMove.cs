@@ -16,6 +16,8 @@ public class SockMove : SockState
     protected new virtual void FrameUpdate()
     {
         base.FrameUpdate();
+
+        Move();
     }
 
     protected new virtual void PhysicsUpdate()
@@ -26,6 +28,16 @@ public class SockMove : SockState
     protected new virtual void CheckState()
     {
         base.CheckState();
+
+        if (!sock.IsGrounded)
+        {
+            sock.ChangeState(sock.SockFall);
+        }
+
+        if (sock.IsOnWall)
+        {
+            sock.ChangeState(sock.SockIdle);
+        }
     }
 
     public override bool CanChangeStateTo(SockState newState)
@@ -36,5 +48,15 @@ public class SockMove : SockState
     public void SetDirection(Vector2 direction)
     {
         moveDirection = direction;
+    }
+
+    private void Move()
+    {
+        if (sock == null || sock.Rb == null)
+            return;
+
+        Vector3 moveVector = new Vector3(moveDirection.x, 0, 0);
+        float acceleration = sock.MoveCurve.Evaluate(timeInState);
+        sock.Rb.linearVelocity = moveVector * acceleration;
     }
 }
