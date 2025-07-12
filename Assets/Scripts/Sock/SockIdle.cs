@@ -44,6 +44,6 @@ public class SockIdle : SockState
 
     public override bool CanChangeStateTo(SockState newState)
     {
-        return newState is SockMove || newState is SockJump;
+        return newState is SockMove || newState is SockJump || newState is SockFall;
     }
 }

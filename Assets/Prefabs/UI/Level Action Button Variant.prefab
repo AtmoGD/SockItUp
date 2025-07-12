@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 843789822470961889, guid: d750250e47e3a244c83682bf89792682, type: 3}
+      propertyPath: m_fontSize
+      value: 30.35
+      objectReference: {fileID: 0}
     - target: {fileID: 3082871970186361528, guid: d750250e47e3a244c83682bf89792682, type: 3}
       propertyPath: m_Name
       value: Level Action Button Variant
@@ -35,14 +39,6 @@ PrefabInstance:
     - target: {fileID: 6923083748426126517, guid: d750250e47e3a244c83682bf89792682, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6923083748426126517, guid: d750250e47e3a244c83682bf89792682, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 160
-      objectReference: {fileID: 0}
-    - target: {fileID: 6923083748426126517, guid: d750250e47e3a244c83682bf89792682, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6923083748426126517, guid: d750250e47e3a244c83682bf89792682, type: 3}
       propertyPath: m_LocalPosition.x
@@ -94,15 +90,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8080603493330567811, guid: d750250e47e3a244c83682bf89792682, type: 3}
       propertyPath: m_Color.b
-      value: 0.54668033
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8080603493330567811, guid: d750250e47e3a244c83682bf89792682, type: 3}
       propertyPath: m_Color.g
-      value: 0.54668033
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8080603493330567811, guid: d750250e47e3a244c83682bf89792682, type: 3}
       propertyPath: m_Color.r
-      value: 0.990566
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

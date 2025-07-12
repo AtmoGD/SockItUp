@@ -52,7 +52,7 @@ public class SockMove : SockState
 
     public override bool CanChangeStateTo(SockState newState)
     {
-        return false;
+        return newState is SockIdle || newState is SockJump || newState is SockFall;
     }
 
     public void SetDirection(Vector2 direction)

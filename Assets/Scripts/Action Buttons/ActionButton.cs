@@ -5,6 +5,8 @@ public enum ActionButtonAction
 {
     // <------ UI ------>
     StartGame,
+    StartNextLevel,
+    StartOver,
     OpenStartScreen,
     OpenCredits,
     OpenSettings,
@@ -31,6 +33,8 @@ public class ActionButton : MonoBehaviour
     [SerializeField] private TMP_Text buttonText = null;
     [SerializeField] private bool initOnAwake = false;
 
+    private bool isCharacterActionButton = false;
+
     private void Awake()
     {
         if (!initOnAwake)
@@ -49,30 +53,38 @@ public class ActionButton : MonoBehaviour
         return actionName;
     }
 
-    public void SetAction(ActionButtonAction _newAction, string _actionName, bool _infiniteUse)
+    public void SetAction(ActionButtonAction _newAction, string _actionName, bool _infiniteUse, bool _isCharacterAction)
     {
         action = _newAction;
         actionName = _actionName;
         infiniteUse = _infiniteUse;
         buttonText.text = _actionName;
+        isCharacterActionButton = _isCharacterAction;
     }
 
     public virtual void StartOverlapping()
     {
-        buttonText.text = "";
+        // buttonText.text = "";
     }
 
     public virtual void StopOverlapping()
     {
-        buttonText.text = actionName;
+        // buttonText.text = actionName;
     }
 
     public virtual void DoAction()
     {
         switch (action)
         {
+            // <------ UI ------>
             case ActionButtonAction.StartGame:
                 StartGame();
+                break;
+            case ActionButtonAction.StartNextLevel:
+                StartNextLevel();
+                break;
+            case ActionButtonAction.StartOver:
+                StartOver();
                 break;
             case ActionButtonAction.OpenStartScreen:
                 OpenStartScreen();
@@ -92,12 +104,26 @@ public class ActionButton : MonoBehaviour
             case ActionButtonAction.QuitGame:
                 QuitGame();
                 break;
+
+            // <------ Character ------>
             case ActionButtonAction.MoveCharacterRight:
                 Game.Manager.Sock.MoveCharacter(Vector2.right);
                 break;
             case ActionButtonAction.MoveCharacterLeft:
                 Game.Manager.Sock.MoveCharacter(Vector2.left);
                 break;
+            case ActionButtonAction.CharacterJump:
+                Game.Manager.Sock.JumpCharacter();
+                break;
+
+            // <------ Level ------>
+            case ActionButtonAction.RotateLevelLeft:
+                Game.Manager.CurrentLevel.RotateLevel(-1);
+                break;
+            case ActionButtonAction.RotateLevelRight:
+                Game.Manager.CurrentLevel.RotateLevel(1);
+                break;
+
             default:
                 Debug.LogWarning("Action not implemented: " + action);
                 break;
@@ -105,13 +131,24 @@ public class ActionButton : MonoBehaviour
 
         if (!infiniteUse)
         {
+            Game.Manager.GameUIController.ButtonDestroyed(this);
             Destroy(gameObject);
         }
     }
 
     private void StartGame()
     {
-        Game.Manager.StartNextLevel();
+        Game.Manager.StartNextLevel(false);
+    }
+
+    private void StartNextLevel()
+    {
+        Game.Manager.StartNextLevel(false);
+    }
+
+    private void StartOver()
+    {
+        Game.Manager.StartNextLevel(true);
     }
 
     private void OpenStartScreen()

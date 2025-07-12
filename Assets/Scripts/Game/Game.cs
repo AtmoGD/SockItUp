@@ -22,8 +22,10 @@ public class Game : MonoBehaviour
     public UIController UIController => uiController;
     [SerializeField] private GameUIController gameUIController;
     public GameUIController GameUIController => gameUIController;
+    [SerializeField] int startLevelIndex = -1;
     private int currentLevelIndex = -1;
     private Level currentLevel;
+    public Level CurrentLevel => currentLevel;
     [SerializeField] private GameState currentState = GameState.MainMenu;
 
     private void Awake()
@@ -37,6 +39,11 @@ public class Game : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        if (startLevelIndex != -1)
+        {
+            currentLevelIndex = startLevelIndex - 1;
+        }
     }
 
     public GameState CurrentState
@@ -44,9 +51,9 @@ public class Game : MonoBehaviour
         get => currentState;
     }
 
-    public void StartNextLevel()
+    public void StartNextLevel(bool reset)
     {
-        if (currentState == GameState.LevelWon || currentState == GameState.MainMenu)
+        if ((currentState == GameState.LevelWon || currentState == GameState.MainMenu) && !reset)
         {
             currentLevelIndex++;
         }
@@ -80,19 +87,27 @@ public class Game : MonoBehaviour
         if (won)
         {
             currentState = GameState.LevelWon;
-            Debug.Log("Level won!");
-            // Handle level won logic here
+            if (currentLevelIndex < levelList.Count - 1)
+            {
+                UIController.ShowLevelWon();
+            }
+            else
+            {
+                UIController.ShowGameEnd();
+            }
         }
         else
         {
             currentState = GameState.LevelLost;
-            Debug.Log("Level lost!");
-            // Handle level lost logic here
+            UIController.ShowLevelLost();
         }
     }
 
     public void QuitGame()
     {
+#if UNITY_WEBGL
+        Screen.fullScreen = false;
+#endif
         Application.Quit();
     }
 }

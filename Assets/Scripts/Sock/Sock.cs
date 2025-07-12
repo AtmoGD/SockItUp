@@ -16,6 +16,7 @@ public class Sock : MonoBehaviour
     [field: SerializeReference] public float TurnSpeed { get; private set; } = 2f;
     [field: SerializeReference] public AnimationCurve JumpCurve { get; private set; } = AnimationCurve.EaseInOut(0, 0, 1, 1);
     [field: SerializeReference] public float JumpForce { get; private set; } = 5f;
+    [field: SerializeReference] public float JumpTime { get; private set; } = 0.5f;
     [field: SerializeReference] public Transform GroundCheckTransform { get; private set; }
     [field: SerializeReference] public LayerMask GroundLayer { get; private set; }
     [field: SerializeReference] public float GroundCheckRadius { get; private set; } = 0.1f;
@@ -82,6 +83,14 @@ public class Sock : MonoBehaviour
 
         ChangeState(SockMove);
         SockMove.SetDirection(direction);
+    }
+
+    public void JumpCharacter()
+    {
+        if (!currentState.CanChangeStateTo(SockJump) || Game.Manager.CurrentState != GameState.Playing)
+            return;
+
+        ChangeState(SockJump);
     }
 
     private void OnDrawGizmos()

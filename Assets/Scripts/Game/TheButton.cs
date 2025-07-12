@@ -7,6 +7,8 @@ using TMPro;
 public class TheButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private TMP_Text buttonText;
+    [SerializeField] private GameObject innerButton;
+    [SerializeField] private float snapSpeed = 10f;
     private RectTransform rect;
     private bool isMoving = false;
     private float pointerMoveThreshold = 5f;
@@ -27,11 +29,47 @@ public class TheButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     void Update()
     {
-        if (!isMoving || Vector2.Distance(pointerStartPosition, Input.mousePosition) < pointerMoveThreshold)
+        if (!isMoving && currentActionButton)
+        {
+            SnapToButton();
+            SetButtonActive(true);
+        }
+
+        if (isMoving && Vector2.Distance(pointerStartPosition, Input.mousePosition) > pointerMoveThreshold)
+        {
+            MoveButton();
+            SetButtonActive(false);
+        }
+
+        CheckActionButton();
+    }
+
+    private void SnapToButton()
+    {
+        if (currentActionButton == null || currentActionButton.GetRect() == null)
             return;
 
-        MoveButton();
-        CheckActionButton();
+        Vector3 targetPosition = currentActionButton.GetRect().position;
+        Vector3 currentPosition = rect.position;
+
+        rect.position = Vector3.Lerp(currentPosition, targetPosition, snapSpeed * Time.deltaTime);
+
+        if (Vector3.Distance(currentPosition, targetPosition) < 0.1f)
+            rect.position = targetPosition;
+    }
+
+    private void SetButtonActive(bool active)
+    {
+        innerButton.SetActive(active);
+        buttonText.gameObject.SetActive(active);
+        if (active)
+        {
+            buttonText.text = currentActionButton.GetActionName();
+        }
+        else
+        {
+            buttonText.text = "";
+        }
     }
 
     private void MoveButton()
@@ -77,7 +115,6 @@ public class TheButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                     currentActionButton?.StopOverlapping();
                     currentActionButton = actionButton;
                     currentActionButton.StartOverlapping();
-                    BecomeButton();
                 }
 
                 return; // Exit after the first overlapping action button is found
@@ -86,7 +123,6 @@ public class TheButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             {
                 currentActionButton.StopOverlapping();
                 currentActionButton = null;
-                buttonText.text = "No Action";
             }
         }
     }
@@ -106,14 +142,5 @@ public class TheButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         Rect otherRectWorld = new Rect(otherCorners[0], otherCorners[2] - otherCorners[0]);
 
         return thisRect.Overlaps(otherRectWorld);
-    }
-
-    private void BecomeButton()
-    {
-        if (currentActionButton == null)
-            return;
-
-
-        buttonText.text = currentActionButton.GetActionName();
     }
 }
