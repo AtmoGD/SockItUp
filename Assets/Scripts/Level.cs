@@ -1,9 +1,18 @@
+using System.Collections.Generic;
 using UnityEngine;
+
+[System.Serializable]
+public class LevelActions
+{
+    public ActionButtonAction action;
+    public bool infiniteUse;
+}
 
 public class Level : MonoBehaviour
 {
-    public Transform startPositionTransform;
-
+    [SerializeField] private Transform startPositionTransform;
+    [SerializeField] private List<LevelActions> characterActions = new List<LevelActions>();
+    [SerializeField] private List<LevelActions> levelActions = new List<LevelActions>();
     protected Sock sock;
     protected Game gm;
 
@@ -24,5 +33,6 @@ public class Level : MonoBehaviour
         }
 
         sock.transform.position = startPositionTransform.position;
+        sock.ChangeState(sock.SockIdle);
     }
 }

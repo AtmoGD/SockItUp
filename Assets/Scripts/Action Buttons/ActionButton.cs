@@ -9,7 +9,9 @@ public enum ActionButtonAction
     OpenSettings,
     OpenPausedMenu,
     HidePausedMenu,
-    QuitGame
+    QuitGame,
+    MoveCharacterRight,
+    MoveCharacterLeft,
 }
 
 [RequireComponent(typeof(RectTransform))]
@@ -73,6 +75,12 @@ public class ActionButton : MonoBehaviour
                 break;
             case ActionButtonAction.QuitGame:
                 QuitGame();
+                break;
+            case ActionButtonAction.MoveCharacterRight:
+                Game.Manager.Sock.MoveCharacter(Vector2.right);
+                break;
+            case ActionButtonAction.MoveCharacterLeft:
+                Game.Manager.Sock.MoveCharacter(Vector2.left);
                 break;
             default:
                 Debug.LogWarning("Action not implemented: " + action);

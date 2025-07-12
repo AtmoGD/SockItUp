@@ -17,12 +17,13 @@ public class Game : MonoBehaviour
     [SerializeField] private List<Level> levelList = new List<Level>();
     [SerializeField] private Transform levelContainer;
     [SerializeField] private Sock sock;
+    public Sock Sock => sock;
     [SerializeField] private UIController uiController;
     public UIController UIController => uiController;
     [SerializeField] private float levelLoadDelay = 1f; // Delay before loading the level
     private int currentLevelIndex = -1;
     private Level currentLevel;
-    private GameState currentState = GameState.MainMenu;
+    [SerializeField] private GameState currentState = GameState.MainMenu;
 
     private void Awake()
     {
@@ -35,6 +36,11 @@ public class Game : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+    }
+
+    public GameState CurrentState
+    {
+        get => currentState;
     }
 
     public void StartNextLevel()

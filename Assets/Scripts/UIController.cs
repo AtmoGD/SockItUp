@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
@@ -8,11 +9,18 @@ public class UIController : MonoBehaviour
     public void LoadLevel()
     {
         loadingScreenAnimator.SetTrigger("LoadLevel");
+    }
+
+    //Is called from load level animation 
+    public void ShowGameUI()
+    {
         mainMenuAnimator.SetBool("StartScreenVisible", false);
+        mainMenuAnimator.SetBool("CreditsVisible", false);
+        mainMenuAnimator.SetBool("SettingsVisible", false);
+        mainMenuAnimator.SetBool("GameUIVisible", true);
         mainMenuAnimator.SetBool("PausedMenuVisible", false);
         mainMenuAnimator.SetBool("LevelLostVisible", false);
         mainMenuAnimator.SetBool("LevelWonVisible", false);
-        mainMenuAnimator.SetBool("GameUIVisible", true);
     }
 
     public void ShowStartScreen()
