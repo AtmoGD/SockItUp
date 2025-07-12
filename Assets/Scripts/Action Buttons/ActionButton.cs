@@ -49,7 +49,7 @@ public class ActionButton : MonoBehaviour
         return actionName;
     }
 
-    public void SetAction(ActionButtonAction _newAction, string _actionName, bool _infiniteUse = false)
+    public void SetAction(ActionButtonAction _newAction, string _actionName, bool _infiniteUse)
     {
         action = _newAction;
         actionName = _actionName;
@@ -69,8 +69,6 @@ public class ActionButton : MonoBehaviour
 
     public virtual void DoAction()
     {
-        Debug.Log(gameObject.name + " action performed.");
-
         switch (action)
         {
             case ActionButtonAction.StartGame:

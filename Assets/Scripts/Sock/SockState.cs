@@ -5,34 +5,37 @@ public class SockState
     protected Sock sock;
     protected float timeInState;
 
-    public virtual void Enter(Sock sock)
+    public SockState(Sock _sock)
     {
-        // base.Enter(sock);
+        sock = _sock;
+        timeInState = 0f;
+    }
+
+    public virtual void Enter(Sock _sock)
+    {
+
+        sock = _sock;
         timeInState = 0f;
         Debug.Log($"Entering state: {this.GetType().Name}");
     }
 
     public virtual void Exit()
     {
-        // base.Exit();
         sock = null;
         Debug.Log($"Exiting state: {this.GetType().Name}");
     }
 
     public virtual void FrameUpdate()
     {
-        // base.FrameUpdate();
         timeInState += Time.deltaTime;
     }
 
     public virtual void PhysicsUpdate()
     {
-        // base.PhysicsUpdate();
     }
 
     public virtual void CheckState()
     {
-        // base.CheckState();
         Debug.Log($"BASE - Checking state: {this.GetType().Name}");
     }
 

@@ -57,6 +57,7 @@ MonoBehaviour:
   actionName: Start Game
   infiniteUse: 0
   buttonText: {fileID: 843789822470961889}
+  initOnAwake: 0
 --- !u!222 &5286907620046188751
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -206,8 +207,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6332d1ef249bb9c40a843eaf105f9868, type: 2}
+  m_sharedMaterial: {fileID: 104602127935310389, guid: 6332d1ef249bb9c40a843eaf105f9868, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

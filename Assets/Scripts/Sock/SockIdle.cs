@@ -2,40 +2,48 @@ using UnityEngine;
 
 public class SockIdle : SockState
 {
-    protected new virtual void Enter(Sock sock)
+    public SockIdle(Sock _sock) : base(_sock)
+    {
+    }
+
+    public override void Enter(Sock sock)
     {
         base.Enter(sock);
     }
 
-    protected new virtual void Exit()
+    public override void Exit()
     {
         base.Exit();
     }
 
-    protected new virtual void FrameUpdate()
+    public override void FrameUpdate()
     {
         base.FrameUpdate();
     }
 
-    protected new virtual void PhysicsUpdate()
+    public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
 
         sock.Rb.linearVelocity = Vector3.zero;
     }
 
-    protected new virtual void CheckState()
+    public override void CheckState()
     {
         if (Game.Manager.CurrentState != GameState.Playing)
             return;
 
-
-        Debug.Log($"IsOnWall: {sock.IsOnWall}, IsGrounded: {sock.IsGrounded}");
+        base.CheckState();
 
         if (!sock.IsGrounded)
         {
             sock.ChangeState(sock.SockFall);
+            return;
         }
-        base.CheckState();
+    }
+
+    public override bool CanChangeStateTo(SockState newState)
+    {
+        return newState is SockMove || newState is SockJump;
     }
 }

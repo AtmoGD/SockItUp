@@ -359,6 +359,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 540815260}
     m_Modifications:
+    - target: {fileID: 843789822470961889, guid: d750250e47e3a244c83682bf89792682, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3082871970186361528, guid: d750250e47e3a244c83682bf89792682, type: 3}
       propertyPath: m_Name
       value: Start Game Buttom
@@ -473,6 +477,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -552,7 +557,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 568232570}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
@@ -598,6 +603,21 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2690dc840fd84044180b872ded31beac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 568232570}
+  smoothSpeed: 0.125
+  offset: {x: 0, y: 5, z: -10}
 --- !u!1 &356273792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,8 +1177,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6332d1ef249bb9c40a843eaf105f9868, type: 2}
+  m_sharedMaterial: {fileID: 104602127935310389, guid: 6332d1ef249bb9c40a843eaf105f9868, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1299,6 +1319,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Back to game
       objectReference: {fileID: 0}
+    - target: {fileID: 843789822470961889, guid: d750250e47e3a244c83682bf89792682, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3082871970186361528, guid: d750250e47e3a244c83682bf89792682, type: 3}
       propertyPath: m_Name
       value: Return to Game Action Button
@@ -1411,6 +1435,11 @@ MonoBehaviour:
 --- !u!4 &568232570 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8109748335597955339, guid: eb6924425540308429507409533aebbb, type: 3}
+  m_PrefabInstance: {fileID: 2068938597415719319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &568232572 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 3039065885388020148, guid: eb6924425540308429507409533aebbb, type: 3}
   m_PrefabInstance: {fileID: 2068938597415719319}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &573310381
@@ -1904,6 +1933,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 540815260}
     m_Modifications:
+    - target: {fileID: 843789822470961889, guid: d750250e47e3a244c83682bf89792682, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3082871970186361528, guid: d750250e47e3a244c83682bf89792682, type: 3}
       propertyPath: m_Name
       value: Close Game Button
@@ -2073,6 +2106,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1069389376}
     m_Modifications:
+    - target: {fileID: 843789822470961889, guid: d750250e47e3a244c83682bf89792682, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3082871970186361528, guid: d750250e47e3a244c83682bf89792682, type: 3}
       propertyPath: m_Name
       value: Close Credits Button
@@ -2265,8 +2302,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Settings
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6332d1ef249bb9c40a843eaf105f9868, type: 2}
+  m_sharedMaterial: {fileID: 104602127935310389, guid: 6332d1ef249bb9c40a843eaf105f9868, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2403,8 +2440,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6332d1ef249bb9c40a843eaf105f9868, type: 2}
+  m_sharedMaterial: {fileID: 104602127935310389, guid: 6332d1ef249bb9c40a843eaf105f9868, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2537,6 +2574,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 540815260}
     m_Modifications:
+    - target: {fileID: 843789822470961889, guid: d750250e47e3a244c83682bf89792682, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3082871970186361528, guid: d750250e47e3a244c83682bf89792682, type: 3}
       propertyPath: m_Name
       value: Open Credits Button
@@ -2655,6 +2696,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 573310382}
     m_Modifications:
+    - target: {fileID: 843789822470961889, guid: d750250e47e3a244c83682bf89792682, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3082871970186361528, guid: d750250e47e3a244c83682bf89792682, type: 3}
       propertyPath: m_Name
       value: Close Settings Button
@@ -2845,6 +2890,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5809959829358923697, guid: 06ca2b096cdfa6f44ab2be26214ef03c, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6938005558044465773, guid: 06ca2b096cdfa6f44ab2be26214ef03c, type: 3}
       propertyPath: m_Name
       value: THE Button
@@ -3019,6 +3068,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 540815260}
     m_Modifications:
+    - target: {fileID: 843789822470961889, guid: d750250e47e3a244c83682bf89792682, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3082871970186361528, guid: d750250e47e3a244c83682bf89792682, type: 3}
       propertyPath: m_Name
       value: Open Settings Button
@@ -3553,6 +3606,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Pause
       objectReference: {fileID: 0}
+    - target: {fileID: 843789822470961889, guid: d750250e47e3a244c83682bf89792682, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3082871970186361528, guid: d750250e47e3a244c83682bf89792682, type: 3}
       propertyPath: m_Name
       value: Pause Game Action Button
@@ -3699,7 +3756,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3039065885388020148, guid: eb6924425540308429507409533aebbb, type: 3}
       propertyPath: m_Constraints
-      value: 24
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 7582193292427886605, guid: eb6924425540308429507409533aebbb, type: 3}
+      propertyPath: <Rb>k__BackingField
+      value: 
+      objectReference: {fileID: 568232572}
+    - target: {fileID: 7582193292427886605, guid: eb6924425540308429507409533aebbb, type: 3}
+      propertyPath: <MoveSpeed>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7582193292427886605, guid: eb6924425540308429507409533aebbb, type: 3}
+      propertyPath: <TurnSpeed>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7582193292427886605, guid: eb6924425540308429507409533aebbb, type: 3}
+      propertyPath: <MoveCurve>k__BackingField.m_Curve.Array.data[1].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7582193292427886605, guid: eb6924425540308429507409533aebbb, type: 3}
+      propertyPath: <MoveCurve>k__BackingField.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7582193292427886605, guid: eb6924425540308429507409533aebbb, type: 3}
+      propertyPath: <MoveCurve>k__BackingField.m_Curve.Array.data[1].outSlope
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8109748335597955339, guid: eb6924425540308429507409533aebbb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3751,10 +3832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8109748335597955339, guid: eb6924425540308429507409533aebbb, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 330585546}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb6924425540308429507409533aebbb, type: 3}
 --- !u!1 &3430900121817124768
@@ -3851,6 +3929,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1104541284}
+  - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 8367985937883520609}
   - {fileID: 891119}

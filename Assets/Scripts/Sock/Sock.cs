@@ -3,15 +3,19 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Sock : MonoBehaviour
 {
-    public SockIdle SockIdle { get; private set; } = new SockIdle();
-    public SockMove SockMove { get; private set; } = new SockMove();
-    public SockJump SockJump { get; private set; } = new SockJump();
-    public SockFall SockFall { get; private set; } = new SockFall();
+    public SockIdle SockIdle { get; private set; }
+    public SockMove SockMove { get; private set; }
+    public SockJump SockJump { get; private set; }
+    public SockFall SockFall { get; private set; }
 
+    protected SockState currentState;
+
+    [field: SerializeField] public Rigidbody Rb { get; private set; } = null;
     [field: SerializeReference] public AnimationCurve MoveCurve { get; private set; } = AnimationCurve.Linear(0, 0, 1, 1);
+    [field: SerializeReference] public float MoveSpeed { get; private set; } = 5f;
     [field: SerializeReference] public float TurnSpeed { get; private set; } = 2f;
     [field: SerializeReference] public AnimationCurve JumpCurve { get; private set; } = AnimationCurve.EaseInOut(0, 0, 1, 1);
-    [field: SerializeReference] public AnimationCurve FallCurve { get; private set; } = AnimationCurve.EaseInOut(0, 0, 1, 1);
+    [field: SerializeReference] public float JumpForce { get; private set; } = 5f;
     [field: SerializeReference] public Transform GroundCheckTransform { get; private set; }
     [field: SerializeReference] public LayerMask GroundLayer { get; private set; }
     [field: SerializeReference] public float GroundCheckRadius { get; private set; } = 0.1f;
@@ -23,7 +27,7 @@ public class Sock : MonoBehaviour
     {
         get
         {
-            if (GroundCheckTransform == null)
+            if (!GroundCheckTransform)
                 return false;
 
             return Physics.CheckSphere(GroundCheckTransform.position, GroundCheckRadius, GroundLayer);
@@ -34,20 +38,19 @@ public class Sock : MonoBehaviour
     {
         get
         {
-            if (WallCheckTransform == null)
+            if (!WallCheckTransform)
                 return false;
 
             return Physics.CheckSphere(WallCheckTransform.position, WallCheckRadius, WallLayer);
         }
     }
 
-    public Rigidbody Rb { get; private set; } = null;
-    protected SockState currentState;
-    protected SockState targetedNextState;
-
     void Awake()
     {
-        Rb = GetComponent<Rigidbody>();
+        SockIdle = new SockIdle(this);
+        SockMove = new SockMove(this);
+        SockJump = new SockJump(this);
+        SockFall = new SockFall(this);
     }
 
 
@@ -63,12 +66,6 @@ public class Sock : MonoBehaviour
     void Update()
     {
         currentState?.FrameUpdate();
-
-        if (targetedNextState != null && currentState.CanChangeStateTo(targetedNextState))
-        {
-            ChangeState(targetedNextState);
-            targetedNextState = null;
-        }
 
         currentState?.CheckState();
     }

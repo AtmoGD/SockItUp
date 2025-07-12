@@ -53,7 +53,7 @@ public class GameUIController : MonoBehaviour
 
         ActionButton button = Instantiate(currentPrefab, currentPanel).GetComponent<ActionButton>();
         currentList.Add(button);
-        button.SetAction(_action.action, _action.actionName);
+        button.SetAction(_action.action, _action.actionName, _action.infiniteUse);
 
         AnimateToPosition animateToPosition = button.GetComponent<AnimateToPosition>();
         if (animateToPosition != null)
