@@ -6,9 +6,9 @@ public class SockIdle : SockState
     {
     }
 
-    public override void Enter(Sock sock)
+    public override void Enter()
     {
-        base.Enter(sock);
+        base.Enter();
     }
 
     public override void Exit()

@@ -11,6 +11,7 @@ public class Sock : MonoBehaviour
     protected SockState currentState;
 
     [field: SerializeField] public Rigidbody Rb { get; private set; } = null;
+    [field: SerializeReference] public Animator Anim { get; private set; } = null;
     [field: SerializeReference] public AnimationCurve MoveCurve { get; private set; } = AnimationCurve.Linear(0, 0, 1, 1);
     [field: SerializeReference] public float MoveSpeed { get; private set; } = 5f;
     [field: SerializeReference] public float TurnSpeed { get; private set; } = 2f;
@@ -61,7 +62,7 @@ public class Sock : MonoBehaviour
 
         currentState = newState;
 
-        currentState?.Enter(this);
+        currentState?.Enter();
     }
 
     void Update()

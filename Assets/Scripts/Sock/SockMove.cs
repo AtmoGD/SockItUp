@@ -9,14 +9,18 @@ public class SockMove : SockState
     {
     }
 
-    public override void Enter(Sock sock)
+    public override void Enter()
     {
-        base.Enter(sock);
+        base.Enter();
+
+        sock.Anim.SetBool("Move", true);
     }
 
     public override void Exit()
     {
         base.Exit();
+
+        sock.Anim.SetBool("Move", false);
     }
 
     public override void FrameUpdate()

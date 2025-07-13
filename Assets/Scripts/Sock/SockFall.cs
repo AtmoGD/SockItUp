@@ -7,14 +7,18 @@ public class SockFall : SockState
     {
     }
 
-    public override void Enter(Sock sock)
+    public override void Enter()
     {
-        base.Enter(sock);
+        base.Enter();
+
+        sock.Anim.SetBool("Fall", true);
     }
 
     public override void Exit()
     {
         base.Exit();
+
+        sock.Anim.SetBool("Fall", false);
     }
 
     public override void FrameUpdate()

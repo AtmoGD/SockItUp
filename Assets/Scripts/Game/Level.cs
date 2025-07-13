@@ -48,6 +48,8 @@ public class Level : MonoBehaviour
         sock.ChangeState(sock.SockIdle);
 
         gm.GameUIController.InitLevel(this);
+
+        gm.TheButton.ResetButton();
     }
 
     void Update()

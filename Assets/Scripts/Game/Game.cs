@@ -14,6 +14,8 @@ public enum GameState
 public class Game : MonoBehaviour
 {
     public static Game Manager { get; private set; }
+    [SerializeField] private TheButton theButton;
+    public TheButton TheButton => theButton;
     [SerializeField] private List<Level> levelList = new List<Level>();
     [SerializeField] private Transform levelContainer;
     [SerializeField] private Sock sock;

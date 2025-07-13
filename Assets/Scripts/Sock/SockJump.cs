@@ -6,14 +6,18 @@ public class SockJump : SockState
     {
     }
 
-    public override void Enter(Sock sock)
+    public override void Enter()
     {
-        base.Enter(sock);
+        base.Enter();
+
+        sock.Anim.SetBool("Jump", true);
     }
 
     public override void Exit()
     {
         base.Exit();
+
+        sock.Anim.SetBool("Jump", false);
     }
 
     public override void FrameUpdate()

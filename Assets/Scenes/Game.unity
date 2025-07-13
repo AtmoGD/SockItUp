@@ -197,7 +197,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 78697567}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -779,7 +779,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -804,7 +804,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 356273792}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -855,7 +855,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362476701}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -1524,7 +1524,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540815259}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -1660,11 +1660,6 @@ MonoBehaviour:
 --- !u!4 &568232570 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8109748335597955339, guid: eb6924425540308429507409533aebbb, type: 3}
-  m_PrefabInstance: {fileID: 2068938597415719319}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &568232572 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 3039065885388020148, guid: eb6924425540308429507409533aebbb, type: 3}
   m_PrefabInstance: {fileID: 2068938597415719319}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &573310381
@@ -1898,6 +1893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 768fc215d531bc946818f8e734a776c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theButton: {fileID: 1752091183}
   levelList:
   - {fileID: 8813306865121793532, guid: 2f8080f6aaac99849bc433432d892c8d, type: 3}
   - {fileID: 8813306865121793532, guid: 601880d38ea752c4e8cad71ec3d7c418, type: 3}
@@ -1908,7 +1904,7 @@ MonoBehaviour:
   sock: {fileID: 568232568}
   uiController: {fileID: 761526423}
   gameUIController: {fileID: 761526424}
-  startLevelIndex: 1
+  startLevelIndex: -1
   currentState: 0
 --- !u!1 &711280478
 GameObject:
@@ -2233,7 +2229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &832612690
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3706,11 +3702,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1368679221276297368, guid: 06ca2b096cdfa6f44ab2be26214ef03c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -455
       objectReference: {fileID: 0}
     - target: {fileID: 1368679221276297368, guid: 06ca2b096cdfa6f44ab2be26214ef03c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 1368679221276297368, guid: 06ca2b096cdfa6f44ab2be26214ef03c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3738,6 +3734,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1368679221276297368, guid: 06ca2b096cdfa6f44ab2be26214ef03c, type: 3}
   m_PrefabInstance: {fileID: 1752091178}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1752091183 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7710034076013847642, guid: 06ca2b096cdfa6f44ab2be26214ef03c, type: 3}
+  m_PrefabInstance: {fileID: 1752091178}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b310b2a3962444aaf970781b8d28b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1772619610
 GameObject:
   m_ObjectHideFlags: 0
@@ -3905,6 +3912,10 @@ PrefabInstance:
     - target: {fileID: 3082871970186361528, guid: d750250e47e3a244c83682bf89792682, type: 3}
       propertyPath: m_Name
       value: Open Settings Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 3082871970186361528, guid: d750250e47e3a244c83682bf89792682, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3188749071397139556, guid: d750250e47e3a244c83682bf89792682, type: 3}
       propertyPath: action
@@ -4587,46 +4598,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3039065885388020148, guid: eb6924425540308429507409533aebbb, type: 3}
-      propertyPath: m_Constraints
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 7582193292427886605, guid: eb6924425540308429507409533aebbb, type: 3}
-      propertyPath: <Rb>k__BackingField
-      value: 
-      objectReference: {fileID: 568232572}
-    - target: {fileID: 7582193292427886605, guid: eb6924425540308429507409533aebbb, type: 3}
-      propertyPath: <JumpForce>k__BackingField
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7582193292427886605, guid: eb6924425540308429507409533aebbb, type: 3}
-      propertyPath: <MoveSpeed>k__BackingField
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7582193292427886605, guid: eb6924425540308429507409533aebbb, type: 3}
-      propertyPath: <TurnSpeed>k__BackingField
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7582193292427886605, guid: eb6924425540308429507409533aebbb, type: 3}
-      propertyPath: <JumpCurve>k__BackingField.m_Curve.Array.data[0].inSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7582193292427886605, guid: eb6924425540308429507409533aebbb, type: 3}
-      propertyPath: <MoveCurve>k__BackingField.m_Curve.Array.data[1].inSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7582193292427886605, guid: eb6924425540308429507409533aebbb, type: 3}
-      propertyPath: <JumpCurve>k__BackingField.m_Curve.Array.data[0].outSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7582193292427886605, guid: eb6924425540308429507409533aebbb, type: 3}
-      propertyPath: <MoveCurve>k__BackingField.m_Curve.Array.data[0].outSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7582193292427886605, guid: eb6924425540308429507409533aebbb, type: 3}
-      propertyPath: <MoveCurve>k__BackingField.m_Curve.Array.data[1].outSlope
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8109748335597955339, guid: eb6924425540308429507409533aebbb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4666,10 +4637,6 @@ PrefabInstance:
     - target: {fileID: 8109748335597955339, guid: eb6924425540308429507409533aebbb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8872420830052488455, guid: eb6924425540308429507409533aebbb, type: 3}
-      propertyPath: m_Height
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8985843897243940239, guid: eb6924425540308429507409533aebbb, type: 3}
       propertyPath: m_Name

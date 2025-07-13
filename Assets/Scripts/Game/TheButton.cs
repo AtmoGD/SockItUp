@@ -32,16 +32,25 @@ public class TheButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (!isMoving && currentActionButton)
         {
             SnapToButton();
-            SetButtonActive(true);
         }
 
         if (isMoving && Vector2.Distance(pointerStartPosition, Input.mousePosition) > pointerMoveThreshold)
         {
             MoveButton();
-            SetButtonActive(false);
+            CheckActionButton();
         }
 
-        CheckActionButton();
+        SetButtonActive(currentActionButton);
+    }
+
+    public void ResetButton()
+    {
+        isMoving = false;
+        movedButton = false;
+        pointerStartPosition = Vector2.zero;
+        currentActionButton?.StopOverlapping();
+        currentActionButton = null;
+        SetButtonActive(false);
     }
 
     private void SnapToButton()
@@ -103,6 +112,8 @@ public class TheButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         List<ActionButton> actionButtons = new List<ActionButton>(FindObjectsByType<ActionButton>(FindObjectsSortMode.None));
 
+        bool foundActionButton = false;
+
         foreach (ActionButton actionButton in actionButtons)
         {
             if (actionButton == null || actionButton.GetRect() == null)
@@ -115,15 +126,20 @@ public class TheButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                     currentActionButton?.StopOverlapping();
                     currentActionButton = actionButton;
                     currentActionButton.StartOverlapping();
+                    foundActionButton = true;
+                    // SetButtonActive(true);
                 }
 
                 return; // Exit after the first overlapping action button is found
             }
-            else if (currentActionButton)
-            {
-                currentActionButton.StopOverlapping();
-                currentActionButton = null;
-            }
+
+        }
+
+        if (!foundActionButton && currentActionButton)
+        {
+            currentActionButton.StopOverlapping();
+            currentActionButton = null;
+            // SetButtonActive(false);
         }
     }
 

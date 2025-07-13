@@ -8,20 +8,16 @@ public class SockState
     public SockState(Sock _sock)
     {
         sock = _sock;
-        timeInState = 0f;
     }
 
-    public virtual void Enter(Sock _sock)
+    public virtual void Enter()
     {
-
-        sock = _sock;
         timeInState = 0f;
         Debug.Log($"Entering state: {this.GetType().Name}");
     }
 
     public virtual void Exit()
     {
-        sock = null;
         Debug.Log($"Exiting state: {this.GetType().Name}");
     }
 
