@@ -148,7 +148,9 @@ public class ActionButton : MonoBehaviour
 
     private void StartOver()
     {
-        Game.Manager.StartNextLevel(true);
+        // Game.Manager.StartNextLevel(true);
+        //Show Loading Screen
+        Game.Manager.UIController.LoadLevel();
     }
 
     private void OpenStartScreen()

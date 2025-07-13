@@ -80,6 +80,12 @@ public class Game : MonoBehaviour
 
     public void LoadLevel()
     {
+        if (currentLevel != null)
+        {
+            currentLevel.DestroyLevel();
+            Destroy(currentLevel.gameObject);
+        }
+
         currentLevel = Instantiate(levelList[currentLevelIndex], levelContainer);
 
         currentLevel.InitLevel(sock, this);

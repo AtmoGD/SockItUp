@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SockJump : SockState
 {
+    private float currentMofier = 1f;
     public SockJump(Sock _sock) : base(_sock)
     {
     }
@@ -13,6 +14,9 @@ public class SockJump : SockState
         sock.Anim.SetBool("Jump", true);
 
         sock.Rb.excludeLayers = sock.ExcludeLayersForJump;
+
+        currentMofier = sock.JumpModifier; // Store the current jump modifier
+        sock.SetJumpModifier(1f); // Apply the jump modifier
     }
 
     public override void Exit()
@@ -20,8 +24,6 @@ public class SockJump : SockState
         base.Exit();
 
         sock.Anim.SetBool("Jump", false);
-
-        sock.SetJumpModifier(1f); // Reset jump modifier when exiting jump state
     }
 
     public override void FrameUpdate()
@@ -76,7 +78,7 @@ public class SockJump : SockState
 
     private void Jump()
     {
-        float currentJumpVelocity = sock.JumpCurve.Evaluate(timeInState) * sock.JumpForce * sock.JumpModifier;
+        float currentJumpVelocity = sock.JumpCurve.Evaluate(timeInState) * sock.JumpForce * currentMofier;
         sock.Rb.linearVelocity = new Vector2(sock.Rb.linearVelocity.x, currentJumpVelocity);
     }
 }
