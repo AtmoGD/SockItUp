@@ -13,12 +13,12 @@ public class SockState
     public virtual void Enter()
     {
         timeInState = 0f;
-        Debug.Log($"Entering state: {this.GetType().Name}");
+        // Debug.Log($"Entering state: {this.GetType().Name}");
     }
 
     public virtual void Exit()
     {
-        Debug.Log($"Exiting state: {this.GetType().Name}");
+        // Debug.Log($"Exiting state: {this.GetType().Name}");
     }
 
     public virtual void FrameUpdate()
@@ -32,7 +32,7 @@ public class SockState
 
     public virtual void CheckState()
     {
-        Debug.Log($"BASE - Checking state: {this.GetType().Name}");
+        // Debug.Log($"BASE - Checking state: {this.GetType().Name}");
     }
 
     public virtual bool CanChangeStateTo(SockState newState)

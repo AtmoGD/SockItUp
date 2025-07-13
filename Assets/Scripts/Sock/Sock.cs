@@ -25,27 +25,11 @@ public class Sock : MonoBehaviour
     [field: SerializeReference] public LayerMask WallLayer { get; private set; }
     [field: SerializeReference] public float WallCheckRadius { get; private set; } = 0.1f;
 
-    public bool IsGrounded
-    {
-        get
-        {
-            if (!GroundCheckTransform)
-                return false;
+    private bool isGrounded = false;
+    public bool IsGrounded { get => isGrounded; }
 
-            return Physics.CheckSphere(GroundCheckTransform.position, GroundCheckRadius, GroundLayer);
-        }
-    }
-
-    public bool IsOnWall
-    {
-        get
-        {
-            if (!WallCheckTransform)
-                return false;
-
-            return Physics.CheckSphere(WallCheckTransform.position, WallCheckRadius, WallLayer);
-        }
-    }
+    private bool isOnWall = false;
+    public bool IsOnWall { get => isOnWall; }
 
     void Awake()
     {
@@ -67,6 +51,11 @@ public class Sock : MonoBehaviour
 
     void Update()
     {
+        isGrounded = Physics.CheckSphere(GroundCheckTransform.position, GroundCheckRadius, GroundLayer);
+
+        isOnWall = Physics.CheckSphere(WallCheckTransform.position, WallCheckRadius, WallLayer);
+
+
         currentState?.FrameUpdate();
 
         currentState?.CheckState();

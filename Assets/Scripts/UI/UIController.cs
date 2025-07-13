@@ -22,6 +22,8 @@ public class UIController : MonoBehaviour
         mainMenuAnimator.SetBool("PausedMenuVisible", false);
         mainMenuAnimator.SetBool("LevelLostVisible", false);
         mainMenuAnimator.SetBool("LevelWonVisible", false);
+
+        Game.Manager.TheButton.ResetButton();
     }
 
     public void ShowStartScreen()
@@ -33,47 +35,63 @@ public class UIController : MonoBehaviour
         mainMenuAnimator.SetBool("PausedMenuVisible", false);
         mainMenuAnimator.SetBool("LevelLostVisible", false);
         mainMenuAnimator.SetBool("LevelWonVisible", false);
+
+        Game.Manager.TheButton.ResetButton();
     }
 
     public void ShowCredits()
     {
         mainMenuAnimator.SetBool("StartScreenVisible", false);
         mainMenuAnimator.SetBool("CreditsVisible", true);
+
+        Game.Manager.TheButton.ResetButton();
     }
 
     public void ShowSettings()
     {
         mainMenuAnimator.SetBool("StartScreenVisible", false);
         mainMenuAnimator.SetBool("SettingsVisible", true);
+
+        Game.Manager.TheButton.ResetButton();
     }
 
     public void ShowPausedMenu()
     {
         mainMenuAnimator.SetBool("GameUIVisible", false);
         mainMenuAnimator.SetBool("PausedMenuVisible", true);
+
+        Game.Manager.TheButton.ResetButton();
     }
 
     public void HidePausedMenu()
     {
         mainMenuAnimator.SetBool("PausedMenuVisible", false);
         mainMenuAnimator.SetBool("GameUIVisible", true);
+
+        Game.Manager.TheButton.ResetButton();
     }
 
     public void ShowLevelLost()
     {
         mainMenuAnimator.SetBool("GameUIVisible", false);
         mainMenuAnimator.SetBool("LevelLostVisible", true);
+
+        Game.Manager.TheButton.ResetButton();
     }
 
     public void ShowLevelWon()
     {
         mainMenuAnimator.SetBool("GameUIVisible", false);
         mainMenuAnimator.SetBool("LevelWonVisible", true);
+
+        Game.Manager.TheButton.ResetButton();
     }
 
     public void ShowGameEnd()
     {
         mainMenuAnimator.SetBool("GameUIVisible", false);
         mainMenuAnimator.SetBool("GameEndVisible", true);
+
+        Game.Manager.TheButton.ResetButton();
     }
 }
