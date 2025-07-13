@@ -4,7 +4,7 @@ public class Car : MonoBehaviour
 {
     [SerializeField] private AnimationCurve driveCurve;
     [SerializeField] private float driveSpeed = 5f;
-    [SerializeField] private Vector3 target;
+    [SerializeField] private Transform target;
     [SerializeField] private Transform coliderTransform;
     [SerializeField] private Vector3 marbleOffset;
     private bool isDriving = false;
@@ -26,9 +26,9 @@ public class Car : MonoBehaviour
         driveTime += Time.deltaTime;
 
         float curentSpeed = driveCurve.Evaluate(driveTime) * driveSpeed;
-        Vector3 direction = (target - transform.position).normalized;
+        Vector3 direction = (target.position - transform.position).normalized;
         transform.position += direction * curentSpeed * Time.deltaTime;
-        if (Vector3.Distance(transform.position, target) < 0.1f)
+        if (Vector3.Distance(transform.position, target.position) < 0.1f)
         {
             isDriving = false; // Stop driving when close to target
             driveTime = 0f; // Reset drive time
@@ -58,7 +58,7 @@ public class Car : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, target);
-        Gizmos.DrawSphere(target, 0.1f); // Draw a small sphere at the target position
+        Gizmos.DrawLine(transform.position, target.position);
+        Gizmos.DrawSphere(target.position, 0.1f); // Draw a small sphere at the target position
     }
 }
