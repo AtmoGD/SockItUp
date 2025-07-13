@@ -50,6 +50,13 @@ public class Level : MonoBehaviour
         gm.GameUIController.InitLevel(this);
 
         gm.TheButton.ResetButton();
+
+        gm.Sock.transform.parent = transform;
+    }
+
+    public void DestroyLevel()
+    {
+        gm.Sock.transform.parent = null;
     }
 
     void Update()
@@ -63,6 +70,8 @@ public class Level : MonoBehaviour
 
             Quaternion deltaRotation = Quaternion.Euler(0f, 0f, rotationStep * direction);
             transform.rotation = deltaRotation * transform.rotation;
+
+            gm.Sock.transform.rotation = Quaternion.Euler(0f, 0f, -rotationStep * direction) * gm.Sock.transform.rotation;
 
             rotaionAngleLeft -= rotationStep * direction;
 

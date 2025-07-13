@@ -18,6 +18,7 @@ public class Sock : MonoBehaviour
     [field: SerializeReference] public AnimationCurve JumpCurve { get; private set; } = AnimationCurve.EaseInOut(0, 0, 1, 1);
     [field: SerializeReference] public float JumpForce { get; private set; } = 5f;
     [field: SerializeReference] public float JumpTime { get; private set; } = 0.5f;
+    [field: SerializeReference] public LayerMask ExcludeLayersForJump { get; private set; }
     [field: SerializeReference] public Transform GroundCheckTransform { get; private set; }
     [field: SerializeReference] public LayerMask GroundLayer { get; private set; }
     [field: SerializeReference] public float GroundCheckRadius { get; private set; } = 0.1f;
@@ -30,6 +31,13 @@ public class Sock : MonoBehaviour
 
     private bool isOnWall = false;
     public bool IsOnWall { get => isOnWall; }
+
+    private float jumpModifier = 1f;
+    public float JumpModifier { get => jumpModifier; }
+    public void SetJumpModifier(float modifier)
+    {
+        jumpModifier = modifier;
+    }
 
     void Awake()
     {

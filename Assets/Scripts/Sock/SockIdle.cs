@@ -9,6 +9,8 @@ public class SockIdle : SockState
     public override void Enter()
     {
         base.Enter();
+
+        sock.Rb.excludeLayers = new LayerMask(); // Clear excluded layers
     }
 
     public override void Exit()

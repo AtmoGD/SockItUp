@@ -53,6 +53,10 @@ PrefabInstance:
       value: BlockBarrelRed
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2ee4d670bf6ad1946af358fa5ba4e3f7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2ee4d670bf6ad1946af358fa5ba4e3f7, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}

@@ -1904,7 +1904,7 @@ MonoBehaviour:
   sock: {fileID: 568232568}
   uiController: {fileID: 761526423}
   gameUIController: {fileID: 761526424}
-  startLevelIndex: -1
+  startLevelIndex: 3
   currentState: 0
 --- !u!1 &711280478
 GameObject:
@@ -4598,6 +4598,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7582193292427886605, guid: eb6924425540308429507409533aebbb, type: 3}
+      propertyPath: <WallLayer>k__BackingField.m_Bits
+      value: 896
+      objectReference: {fileID: 0}
+    - target: {fileID: 7582193292427886605, guid: eb6924425540308429507409533aebbb, type: 3}
+      propertyPath: <GroundLayer>k__BackingField.m_Bits
+      value: 896
+      objectReference: {fileID: 0}
+    - target: {fileID: 7582193292427886605, guid: eb6924425540308429507409533aebbb, type: 3}
+      propertyPath: <ExcludeLayersForJump>k__BackingField.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 8109748335597955339, guid: eb6924425540308429507409533aebbb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

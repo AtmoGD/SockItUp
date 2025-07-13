@@ -53,6 +53,10 @@ PrefabInstance:
       value: BlockPitchedRoofYellow
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ec3e9a818ad86ff4996c90b9e0aa800f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ec3e9a818ad86ff4996c90b9e0aa800f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}

@@ -91,7 +91,7 @@ MonoBehaviour:
     actionName: Move Left
     infiniteUse: 1
   levelActions: []
-  levelRotationSpeed: 50
+  levelRotationSpeed: 75
 --- !u!1 &5283385258838640992
 GameObject:
   m_ObjectHideFlags: 0

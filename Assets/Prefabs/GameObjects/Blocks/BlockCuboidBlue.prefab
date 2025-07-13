@@ -53,6 +53,10 @@ PrefabInstance:
       value: BlockCuboidBlue
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 04f67b15f99d8ca4daa8d89b03a05875, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 04f67b15f99d8ca4daa8d89b03a05875, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}

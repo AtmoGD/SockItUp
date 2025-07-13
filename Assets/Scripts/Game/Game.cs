@@ -64,6 +64,7 @@ public class Game : MonoBehaviour
 
         if (currentLevel != null)
         {
+            currentLevel.DestroyLevel();
             Destroy(currentLevel.gameObject);
         }
 

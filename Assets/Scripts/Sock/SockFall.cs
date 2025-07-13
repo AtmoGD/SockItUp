@@ -24,6 +24,15 @@ public class SockFall : SockState
     public override void FrameUpdate()
     {
         base.FrameUpdate();
+
+        if (sock.Rb.linearVelocity.y <= 0)
+        {
+            sock.Rb.excludeLayers = new LayerMask(); // Clear excluded layers when not falling
+        }
+        else
+        {
+            sock.Rb.excludeLayers = sock.ExcludeLayersForJump;
+        }
     }
 
     public override void PhysicsUpdate()
@@ -35,7 +44,7 @@ public class SockFall : SockState
     {
         base.CheckState();
 
-        if (sock.IsGrounded)
+        if (sock.IsGrounded && sock.Rb.linearVelocity.y <= 0)
         {
             sock.ChangeState(sock.SockIdle);
             return;

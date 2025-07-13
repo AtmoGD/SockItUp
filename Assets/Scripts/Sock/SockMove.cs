@@ -14,6 +14,8 @@ public class SockMove : SockState
         base.Enter();
 
         sock.Anim.SetBool("Move", true);
+
+        sock.Rb.excludeLayers = new LayerMask(); // Clear excluded layers
     }
 
     public override void Exit()
@@ -56,7 +58,7 @@ public class SockMove : SockState
 
     public override bool CanChangeStateTo(SockState newState)
     {
-        return newState is SockIdle || newState is SockJump || newState is SockFall;
+        return newState is SockIdle || newState is SockJump || newState is SockFall || newState is SockMove;
     }
 
     public void SetDirection(Vector2 direction)
